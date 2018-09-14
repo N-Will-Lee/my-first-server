@@ -1,4 +1,4 @@
-const njDatabase = require('./knexfile')[process.env.node_env || 'development'];
+const njDatabase = require('./knexfile')[process.env.NODE_ENV || 'development'];
 const knex = require('knex')(njDatabase);
 
 function listAllStudents()  {
