@@ -10,6 +10,9 @@ function getStudentById(id)    {
 function createStudent(newStudent)   {
     return knex('njtable').insert(newStudent).returning('*');
 }
+function updateStudentById(student, id) {
+    return knex('njtable').update(student).where('id', id);
+}
 function deleteStudentById(id) {
     return knex('njtable').where('id', id).delete();
 }
@@ -17,5 +20,6 @@ module.exports = {
     listAllStudents,
     getStudentById,
     createStudent,
-    deleteStudentById
+    deleteStudentById,
+    updateStudentById
 }

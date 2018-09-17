@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const queries = require('./queries');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -25,8 +25,8 @@ app.post('/', (req, res) => {
         res.json({data});
     });
 });
-app.put('/', (req,res) =>   {
-    res.send('PUT request to homepage');
+app.put('/:id', (req,res) =>   {
+    queries.updateStudentById(req.body, req.params.id).then(updatedStudent => res.json({data: updatedStudent}))
 })
 app.delete('/:id', (req, res) => {
     queries.deleteStudentById(req.params.id).then((data) =>    {
